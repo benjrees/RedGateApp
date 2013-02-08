@@ -8,22 +8,22 @@
     <!-- Database folder path -->
     <!-- Required -->
     <!-- Path to the database folder in source control. If it is the build VCS root, then enter: . -->
-    <scriptsFolder></scriptsFolder>
+    <scriptsFolder>RedGateApp\Database\Scriptsfolder</scriptsFolder>
 
     <!-- Database server -->
     <!-- Optional -->
     <!-- For example sql01.example.com\sql2008 -->
-    <databaseServer></databaseServer>
+    <databaseServer>PDM-BENREES</databaseServer>
 
     <!-- Target database name -->
     <!-- Optional. Requires DatabaseServer if set -->
     <!-- The target database to keep up to date with the changes in source control. This must be an existing database on the server; the runner does not create the database for you. -->
-    <databaseName></databaseName>
+    <databaseName>RedGateAppCI</databaseName>
 
     <!-- Windows authentication -->
     <!-- Optional -->
     <!-- For Windows authentication, enter true. This uses the Windows account the build agents run under. For SQL authentication, enter false. -->
-    <databaseIntegratedAuthentication></databaseIntegratedAuthentication>
+    <databaseIntegratedAuthentication>true</databaseIntegratedAuthentication>
 
     <!-- SQL username -->
     <!-- Required if DatabaseServer is set and Windows authentication is false -->
