@@ -47,7 +47,7 @@ These are in the folders called:
 *SDG (SQL Data Generator)
 *SDOC (SQL Doc)
 *sqlCmd (SQL Command, a Microsoft redistributable required for running SQL commands)
-*sqlNCli (SQL Native Client, a Microsoft redistributable required for connectivity)
+*msOdbcSql (Microsoft ODBC Driver for SQL Server, a Microsoft redistributable required for connectivity)
 
 These tools require an Automation License. See http://www.red-gate.com/products/sql-development/automation-license-for-continuous-integration/licensing for more information on this and http://www.red-gate.com/supportcenter/Content/Automation_with_Red_Gate_tools/help/1.0/ActivatingyourAutomationLicense for more information on how to activate the license.
 

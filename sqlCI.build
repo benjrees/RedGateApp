@@ -87,7 +87,7 @@ If you are using this through the command line, enter a number here to set the b
 
   <!-- Deployment Manager server key -->
   <!-- Required if DeploymentManagerUrl is set -->
-  <!-- The server key for Red Gate Deployment Manager. You can find this in your profile in the Deployment Manager UI. -->
+  <!-- The API key for Red Gate Deployment Manager. You can find this in your profile in the Deployment Manager UI. -->
   <property name="deploymentManagerApiKey" value="" />
 
   <!-- Populate database with test data -->
