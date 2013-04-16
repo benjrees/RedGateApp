@@ -99,7 +99,7 @@ If you are using this through the command line, enter a number here to set the b
     <!-- tSQLt tests -->
     <!-- Optional -->
     <!-- To run tSQLt tests in source control for the database, enter true. -->
-    <enableTsqlt></enableTsqlt>
+    <enableTsqlt>true</enableTsqlt>
 
     <!-- Generate database documentation -->
     <!-- Optional -->
