@@ -31,7 +31,7 @@
 
     <!-- SQL password -->
     <!-- Required if DatabaseServer is set and Windows authentication is false -->
-    <databasePassword>Peruzzi1</databasePassword>
+    <databasePassword>Bamboo</databasePassword>
 
     <!-- NuGet package name -->
     <!-- Optional. Requires PackageVersion if set -->
