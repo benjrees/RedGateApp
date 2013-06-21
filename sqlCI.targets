@@ -91,7 +91,7 @@ If you are using this through the command line, enter a number here to set the b
     <!-- Deployment manager URL -->
     <!-- Either this or PackageRepository is required if GenerateUpgradeScriptFor or ApiKeyForPackagePublish is set. This is required if GenerateUpgradeScriptForCurrentlyDeployedVersions is true. -->
     <!-- URL of Red Gate Deployment Manager, for example: http://deploymentmanager.example.com/ -->
-    <deploymentManagerUrl>http://10.120.115.175/</deploymentManagerUrl>
+    <deploymentManagerUrl>http://10.120.115.175:8080/nuget/</deploymentManagerUrl>
 
     <!-- Deployment Manager server key -->
     <!-- Required if DeploymentManagerUrl is set -->
