@@ -91,12 +91,12 @@ If you are using this through the command line, enter a number here to set the b
     <!-- Deployment manager URL -->
     <!-- Either this or PackageRepository is required if GenerateUpgradeScriptFor or ApiKeyForPackagePublish is set. This is required if GenerateUpgradeScriptForCurrentlyDeployedVersions is true. -->
     <!-- URL of Red Gate Deployment Manager, for example: http://deploymentmanager.example.com/ -->
-    <deploymentManagerUrl></deploymentManagerUrl>
+    <deploymentManagerUrl>http://10.120.115.175/</deploymentManagerUrl>
 
     <!-- Deployment Manager server key -->
     <!-- Required if DeploymentManagerUrl is set -->
     <!-- The API key for Red Gate Deployment Manager. You can find this in your profile in the Deployment Manager UI. -->
-    <deploymentManagerApiKey></deploymentManagerApiKey>
+    <deploymentManagerApiKey>B88E1C8DC03BAB37354B187F28BC716E41EE4FC1</deploymentManagerApiKey>
 
     <!-- Populate database with test data -->
     <!-- Optional -->
