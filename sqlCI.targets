@@ -36,7 +36,7 @@
     <!-- NuGet package name -->
     <!-- Optional. Requires PackageVersion if set -->
     <!-- Name of the NuGet package to create. -->
-    <packageId></packageId>
+    <packageId>RedGateApp</packageId>
 
     <!-- Build number -->
     <!-- Required if PackageId is set -->
