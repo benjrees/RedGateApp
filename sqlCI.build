@@ -41,9 +41,16 @@
   <!-- Required if PackageId is set -->
   <!-- On TeamCity, enter ${build.number}
 On CruiseControl.NET, enter ${CCNetLabel}
+On TFS versions 2008 and earlier, enter ${BuildNumber} 
+On TFS versions 2010 and later, follow the instructions here: www.red-gate.com/buildnumbertfs and enter ${BuildNumber}
 If you are using a different build system, please email support@red-gate.com for help.
 If you are using this through the command line, enter a number here to set the build number manually. -->
   <property name="packageVersion" value="" />
+
+  <!-- Output folder path -->
+  <!-- Optional -->
+  <!-- Path to the output folder.  It defaults to something sensible if not specified. -->
+  <property name="outputFolder" value="" />
 
   <!-- NuGet API key -->
   <!-- Requires either PackageRepository or DeploymentManagerUrl and DeploymentManagerApiKey if set -->
@@ -112,8 +119,9 @@ If you are using this through the command line, enter a number here to set the b
 
   <!-- Automation license serial number -->
   <!-- Optional -->
-  <!-- You can find your serial number on your invoice. If you do not enter a key, you will start a one month free trial. -->
-  <property name="licenseSerialKey" value="" />
+  <!-- You can find your serial number on your invoice. If you do not enter a key, you will start a one month free trial.
+If you have multiple serial numbers, separate them with commas without spaces. -->
+  <property name="activateSerial" value="" />
 
   <!-- Email address for updates -->
   <!-- Optional -->
@@ -135,6 +143,7 @@ If you are using this through the command line, enter a number here to set the b
   <property name="sqlCI" if="${databasePassword != ''}" value="${sqlCI} &quot;/databasePassword:${databasePassword}&quot;" />
   <property name="sqlCI" if="${packageId != ''}" value="${sqlCI} &quot;/packageId:${packageId}&quot;" />
   <property name="sqlCI" if="${packageVersion != ''}" value="${sqlCI} &quot;/packageVersion:${packageVersion}&quot;" />
+  <property name="sqlCI" if="${outputFolder != ''}" value="${sqlCI} &quot;/outputFolder:${outputFolder}&quot;" />
   <property name="sqlCI" if="${apiKeyForPackagePublish != ''}" value="${sqlCI} &quot;/apiKeyForPackagePublish:${apiKeyForPackagePublish}&quot;" />
   <property name="sqlCI" if="${generateCreationScript != '' and generateCreationScript != '0' and generateCreationScript != 'false'}" value="${sqlCI} &quot;/generateCreationScript&quot;" />
   <property name="sqlCI" if="${validateCreationScript != '' and validateCreationScript != '0' and validateCreationScript != 'false'}" value="${sqlCI} &quot;/validateCreationScript&quot;" />
@@ -148,7 +157,7 @@ If you are using this through the command line, enter a number here to set the b
   <property name="sqlCI" if="${enableTsqlt != '' and enableTsqlt != '0' and enableTsqlt != 'false'}" value="${sqlCI} &quot;/enableTsqlt&quot;" />
   <property name="sqlCI" if="${sqlDocProject != ''}" value="${sqlCI} &quot;/sqlDocProject:${sqlDocProject}&quot;" />
   <property name="sqlCI" if="${additionalCompareArgs != ''}" value="${sqlCI} &quot;/additionalCompareArgs:${additionalCompareArgs}&quot;" />
-  <property name="sqlCI" if="${licenseSerialKey != ''}" value="${sqlCI} &quot;/licenseSerialKey:${licenseSerialKey}&quot;" />
+  <property name="sqlCI" if="${activateSerial != ''}" value="${sqlCI} &quot;/activateSerial:${activateSerial}&quot;" />
   <property name="sqlCI" if="${emailAddress != ''}" value="${sqlCI} &quot;/emailAddress:${emailAddress}&quot;" />
   <target name="sqlCI">
     <fail if="${sqlCI == ''}" message="You have to edit the variables at the top of the sqlCI.build script" />

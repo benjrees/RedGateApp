@@ -42,9 +42,16 @@
     <!-- Required if PackageId is set -->
     <!-- On TeamCity, enter $(build_number)
 On CruiseControl.NET, enter $(CCNetLabel)
+On TFS versions 2008 and earlier, enter $(BuildNumber) 
+On TFS versions 2010 and later, follow the instructions here: www.red-gate.com/buildnumbertfs and enter $(BuildNumber)
 If you are using a different build system, please email support@red-gate.com for help.
 If you are using this through the command line, enter a number here to set the build number manually. -->
     <packageVersion></packageVersion>
+
+    <!-- Output folder path -->
+    <!-- Optional -->
+    <!-- Path to the output folder.  It defaults to something sensible if not specified. -->
+    <outputFolder></outputFolder>
 
     <!-- NuGet API key -->
     <!-- Requires either PackageRepository or DeploymentManagerUrl and DeploymentManagerApiKey if set -->
@@ -88,7 +95,7 @@ If you are using this through the command line, enter a number here to set the b
 
     <!-- Deployment Manager server key -->
     <!-- Required if DeploymentManagerUrl is set -->
-    <!-- The server key for Red Gate Deployment Manager. You can find this in your profile in the Deployment Manager UI. -->
+    <!-- The API key for Red Gate Deployment Manager. You can find this in your profile in the Deployment Manager UI. -->
     <deploymentManagerApiKey></deploymentManagerApiKey>
 
     <!-- Populate database with test data -->
@@ -113,8 +120,9 @@ If you are using this through the command line, enter a number here to set the b
 
     <!-- Automation license serial number -->
     <!-- Optional -->
-    <!-- You can find your serial number on your invoice. If you do not enter a key, you will start a one month free trial. -->
-    <licenseSerialKey></licenseSerialKey>
+    <!-- You can find your serial number on your invoice. If you do not enter a key, you will start a one month free trial.
+If you have multiple serial numbers, separate them with commas without spaces. -->
+    <activateSerial></activateSerial>
 
     <!-- Email address for updates -->
     <!-- Optional -->
@@ -139,6 +147,7 @@ If you are using this through the command line, enter a number here to set the b
     <sqlCIargs Condition="'$(databasePassword)' != ''">$(sqlCIargs) "/databasePassword:$(databasePassword)"</sqlCIargs>
     <sqlCIargs Condition="'$(packageId)' != ''">$(sqlCIargs) "/packageId:$(packageId)"</sqlCIargs>
     <sqlCIargs Condition="'$(packageVersion)' != ''">$(sqlCIargs) "/packageVersion:$(packageVersion)"</sqlCIargs>
+    <sqlCIargs Condition="'$(outputFolder)' != ''">$(sqlCIargs) "/outputFolder:$(outputFolder)"</sqlCIargs>
     <sqlCIargs Condition="'$(apiKeyForPackagePublish)' != ''">$(sqlCIargs) "/apiKeyForPackagePublish:$(apiKeyForPackagePublish)"</sqlCIargs>
     <sqlCIargs Condition="'$(generateCreationScript)' != '' And '$(generateCreationScript)' != '0' And '$(generateCreationScript)' != 'false'">$(sqlCIargs) "/generateCreationScript"</sqlCIargs>
     <sqlCIargs Condition="'$(validateCreationScript)' != '' And '$(validateCreationScript)' != '0' And '$(validateCreationScript)' != 'false'">$(sqlCIargs) "/validateCreationScript"</sqlCIargs>
@@ -152,12 +161,14 @@ If you are using this through the command line, enter a number here to set the b
     <sqlCIargs Condition="'$(enableTsqlt)' != '' And '$(enableTsqlt)' != '0' And '$(enableTsqlt)' != 'false'">$(sqlCIargs) "/enableTsqlt"</sqlCIargs>
     <sqlCIargs Condition="'$(sqlDocProject)' != ''">$(sqlCIargs) "/sqlDocProject:$(sqlDocProject)"</sqlCIargs>
     <sqlCIargs Condition="'$(additionalCompareArgs)' != ''">$(sqlCIargs) "/additionalCompareArgs:$(additionalCompareArgs)"</sqlCIargs>
-    <sqlCIargs Condition="'$(licenseSerialKey)' != ''">$(sqlCIargs) "/licenseSerialKey:$(licenseSerialKey)"</sqlCIargs>
+    <sqlCIargs Condition="'$(activateSerial)' != ''">$(sqlCIargs) "/activateSerial:$(activateSerial)"</sqlCIargs>
     <sqlCIargs Condition="'$(emailAddress)' != ''">$(sqlCIargs) "/emailAddress:$(emailAddress)"</sqlCIargs>
-    <sqlCI>(echo set REDGATE_SEND_ERROR_REPORTS=true &amp; echo sqlCI.exe $(sqlCIargs)) | cmd.exe</sqlCI> <!-- set REDGATE_SEND_ERROR_REPORTS to false if you don't want to send us error reports -->
+    <showErrorMessage Condition="'$(sqlCIargs)' == ''">true</showErrorMessage>
+    <sqlCIargs Condition="'$(outputFolder)' == '' And '$(OutDir)' != ''">$(sqlCIargs) "/outputFolder:$(OutDir)"</sqlCIargs>
+    <sqlCI>(echo set REDGATE_SEND_ERROR_REPORTS=true &amp; echo set RUNNING_IN_MSBUILD=true &amp; echo sqlCI.exe $(sqlCIargs)) | cmd.exe</sqlCI> <!-- set REDGATE_SEND_ERROR_REPORTS to false if you don't want to send us error reports -->
   </PropertyGroup>
   <Target Name="sqlCI">
-    <Error Condition="'$(sqlCIargs)' == ''" Text="You have to edit the variables at the top of the sqlCI.targets script" />
+    <Error Condition="'$(showErrorMessage)' != ''" Text="You have to edit the variables at the top of the sqlCI.targets script" />
     <Message Text="Starting: $(sqlCI)" />
     <Exec Command="$(sqlCI)" />
   </Target>
