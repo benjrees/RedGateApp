@@ -23,15 +23,15 @@
     <!-- Windows authentication -->
     <!-- Optional -->
     <!-- For Windows authentication, enter true. This uses the Windows account the build agents run under. For SQL authentication, enter false. -->
-    <databaseIntegratedAuthentication>true</databaseIntegratedAuthentication>
+    <databaseIntegratedAuthentication>false</databaseIntegratedAuthentication>
 
     <!-- SQL username -->
     <!-- Required if DatabaseServer is set and Windows authentication is false -->
-    <databaseUserName></databaseUserName>
+    <databaseUserName>Bamboo</databaseUserName>
 
     <!-- SQL password -->
     <!-- Required if DatabaseServer is set and Windows authentication is false -->
-    <databasePassword></databasePassword>
+    <databasePassword>Peruzzi1</databasePassword>
 
     <!-- NuGet package name -->
     <!-- Optional. Requires PackageVersion if set -->
