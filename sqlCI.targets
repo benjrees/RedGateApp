@@ -46,7 +46,7 @@ On TFS versions 2008 and earlier, enter $(BuildNumber)
 On TFS versions 2010 and later, follow the instructions here: www.red-gate.com/buildnumbertfs and enter $(BuildNumber)
 If you are using a different build system, please email support@red-gate.com for help.
 If you are using this through the command line, enter a number here to set the build number manually. -->
-    <packageVersion></packageVersion>
+    <packageVersion>1</packageVersion>
 
     <!-- Output folder path -->
     <!-- Optional -->
