@@ -86,7 +86,7 @@ If you are using this through the command line, enter a number here to set the b
     <!-- Package repository URL -->
     <!-- Either this or DeploymentManagerUrl is required if GenerateUpgradeScriptFor is set -->
     <!-- NuGet package repository URL for publishing and retrieving packages. For example: http://nuget.example.com/api/v2/ or http://buildserver.example.com/guestAuth/app/nuget/v1/FeedService.svc -->
-    <packageRepository></packageRepository>
+    <packageRepository>http://10.120.115.175:8080/nuget/</packageRepository>
 
     <!-- Deployment manager URL -->
     <!-- Either this or PackageRepository is required if GenerateUpgradeScriptFor or ApiKeyForPackagePublish is set. This is required if GenerateUpgradeScriptForCurrentlyDeployedVersions is true. -->
